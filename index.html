@@ -29,17 +29,17 @@
                 
               </ul>
         </menu>
-        <section >
-            <div class="alert alert-success shadow-lg hidden">
+        <section id="no-data">
+            <div id="found-alert" class="alert alert-success shadow-lg hidden w-5/12 mx-auto mt-10">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  <span>Your purchase has been confirmed!</span>
+                  <h1><span id="news-found"></span> News Found</h1>
                 </div>
               </div>
-              <div class="alert alert-warning shadow-lg hidden">
+              <div  id="no-found" class="alert alert-warning shadow-lg hidden w-5/12 mx-auto mt-10">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                  <span>Warning: Invalid email address!</span>
+                  <span>No news found</span>
                 </div>
               </div>
         </section>
@@ -60,8 +60,29 @@
                 <input type="checkbox" id="my-modal-5" class="modal-toggle" />
                 <div class="modal">
                 <div class="modal-box w-11/12 max-w-5xl">
-                <h3 id="news-details" class="font-bold text-lg"></h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                <section>
+                    <div class="card lg:card-side bg-base-100 shadow-xl mb-10">
+                        <figure><img id="news-img" src="" alt="Album"></figure>
+                        <div class="card-body">
+                          <h2 id="news-title" class="card-title"></h2>
+                          <p id="news-details"></p>
+                          <div class="card-actions justify-evenly items-center ">
+                                <div class="flex justify-center items-center gap-4">
+                                    <img class="w-16 mask mask-circle" src="" />
+                                    <div>
+                                    <h4></h4>
+                                    <p></p>
+                                    </div>
+                                </div>  
+                                    <div>
+                                    <div class="stat">
+                                    <div class="stat-value text-secondary"></div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                      </div>
+                </section>
                 <div class="modal-action">
                 <label for="my-modal-5" class="btn">Yay!</label>
                 </div>

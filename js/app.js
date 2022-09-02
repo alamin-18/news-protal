@@ -5,9 +5,11 @@ const categoryload = async() =>{
     displayCategory(data.data.news_category)
 };
 
+
 const displayCategory = (data) =>{
     const newsMenu = document.getElementById("news-menu")
-  data.forEach(category =>{
+    data.forEach(category =>{
+    
     // console.log(category)
     const li = document.createElement("li")
     li.innerHTML = `<button onclick=categoryClick('${category.category_id}') class="btn btn-active ">${category.category_name}</button>`
@@ -24,10 +26,24 @@ const categoryClick = async(id) =>{
 }
 
 const displayNews = (data) =>{
+    const foundData = document.getElementById("found-alert")
+    const noData = document.getElementById("no-found")
+    if(data.length === 0){
+        noData.classList.remove("hidden")
+        foundData.classList.add("hidden")
+        
+    }
+    else{
+        const foundNews = document.getElementById("news-found")
+        foundNews.innerText = `${data.length}`
+        foundData.classList.remove("hidden")
+        noData.classList.add("hidden")
+    }
+    
     const newsContainer = document.getElementById("news-container")
     newsContainer.textContent =``
     data.forEach(news =>{
-        console.log(news)
+        // console.log(news)
         const div = document.createElement("div")
         div.innerHTML = `
                 <div class="card lg:card-side bg-base-100 shadow-xl mb-10">
@@ -83,6 +99,10 @@ const dispalyDetails = (data) =>{
     
     const modal = document.getElementById("modal")
     data.forEach(details =>{
+        // const newsImg= document.getElementById("news-img")
+        // newsImg.innerI = `${details.image_url}`
+        const newsTitle = document.getElementById("news-title")
+        newsTitle.innerText = `${details.title}`
         const newsDetails = document.getElementById("news-details")
         newsDetails.innerText =`${details.details}`
     })
