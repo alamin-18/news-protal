@@ -26,12 +26,14 @@ const categoryClick = async(id) =>{
 }
 
 const displayNews = (data) =>{
+    const spinner = document.getElementById("spinner")
+    spinner.classList.remove("hidden");
     const foundData = document.getElementById("found-alert")
     const noData = document.getElementById("no-found")
     if(data.length === 0){
         noData.classList.remove("hidden")
         foundData.classList.add("hidden")
-        
+       
     }
     else{
         const foundNews = document.getElementById("news-found")
@@ -39,7 +41,6 @@ const displayNews = (data) =>{
         foundData.classList.remove("hidden")
         noData.classList.add("hidden")
     }
-    
     const newsContainer = document.getElementById("news-container")
     newsContainer.textContent =``
     data.forEach(news =>{
@@ -85,7 +86,9 @@ const displayNews = (data) =>{
         
         `
         newsContainer.appendChild(div)
+        spinner.classList.add("hidden")
     })
+    
 }
 
 const newsDetails = async(news_id) =>{
