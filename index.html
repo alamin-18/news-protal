@@ -24,12 +24,12 @@
                 </div>
               </div>
         </nav>
-        <menu>
+        <menu class="w-7/12 mx-auto">
             <ul id="news-menu" class="menu lg:menu-vertical menu-horizontal bg-base-100 rounded-md gap-5 text-center text-2xl ">
                 
               </ul>
         </menu>
-        <section>
+        <section >
             <div class="alert alert-success shadow-lg hidden">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -46,21 +46,28 @@
     </header>
     <!-- header area ends -->
     <!-- main section start -->
-    <main>
+    <main class="mt-10">
         <!-- news update -->
-        <section class="w-1/2 mx-auto">
-            <div class="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src="https://placeimg.com/400/400/arch" alt="Album"></figure>
-                <div class="card-body">
-                  <h2 class="card-title">New album is released!</h2>
-                  <p>Click the button to listen on Spotiwhy app.</p>
-                  <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Listen</button>
-                  </div>
-                </div>
-              </div>
+        <section id="news-container" class="w-3/4 mx-auto">
+            
         </section>
+
        
+            <!-- modal -->
+        <section id="modal">
+    
+    <!-- <!-- Put this part before -->
+                <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+                <div class="modal">
+                <div class="modal-box w-11/12 max-w-5xl">
+                <h3 id="news-details" class="font-bold text-lg"></h3>
+                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                <div class="modal-action">
+                <label for="my-modal-5" class="btn">Yay!</label>
+                </div>
+                </div>
+                </div>
+            </section>
     </main>
     <!-- main section ends -->
 
