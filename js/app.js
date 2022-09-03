@@ -12,7 +12,7 @@ const displayCategory = (data) =>{
     
     // console.log(category)
     const li = document.createElement("li")
-    li.innerHTML = `<button onclick=categoryClick('${category.category_id}') class="btn btn-active ">${category.category_name}</button>`
+    li.innerHTML = `<button mb-6 onclick=categoryClick('${category.category_id}') class="btn btn-active ">${category.category_name}</button>`
     // li.innerText = `${category.category_name}`
     newsMenu.appendChild(li)
   })
@@ -64,7 +64,7 @@ const displayNews = (data) =>{
                       <h2 class="card-title">${news.title}</h2>
                       <p>${news.details.slice(0,250)+"..."}</p>
                       <div class="card-actions flex justify-evenly items-center sm:mt-10 ">
-                            <div class="flex justify-center items-center gap-4">
+                         <div class="flex justify-center items-center gap-4">
                                 <img class="w-16 mask mask-circle" src="${news.author.img}" />
                                 <div>
                                 <h4>${news.author.name}</h4>
