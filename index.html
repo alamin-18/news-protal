@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pabna news</title>
+    <script src="https://kit.fontawesome.com/93d402d77a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -25,20 +26,33 @@
               </div>
         </nav>
         
-        <menu class="w-7/12 mx-auto">
-            <ul id="news-menu" class="menu lg:menu-vertical menu-horizontal bg-base-100 rounded-md gap-5 text-center text-2xl ">
+        <!-- new menu -->
+        <!-- menu toggol -->
+        <div class="collapse">
+          <input type="checkbox" /> 
+          <div class="collapse-title text-xl font-medium">
+            Click me to show/hide content
+          </div>
+          <div class="collapse-content"> 
+            <p>hello</p>
+          </div>
+        </div>
+        <!-- menu toggol -->
+      <!-- menu -->
+        <menu class="w-7/12 mx-auto sm:collapse">
+            <ul id="news-menu" class="menu menu-vertical menu-horizontal bg-base-100 rounded-md gap-5 text-center text-2xl ">
                 
               </ul>
         </menu>
         <progress id="spinner" class="progress w-full hidden"></progress>
         <section id="no-data">
-            <div id="found-alert" class="alert alert-success shadow-lg hidden w-5/12 mx-auto mt-10">
+            <div id="found-alert" class="alert alert-success shadow-lg hidden lg:w-5/12 sm:w-1/2 mx-auto mt-10">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <h1 class="text-4xl font-semibold"><span id="news-found"></span> News Found</h1>
                 </div>
               </div>
-              <div  id="no-found" class="alert alert-warning shadow-lg hidden w-5/12 mx-auto mt-10">
+              <div  id="no-found" class="alert alert-warning shadow-lg hidden lg:w-5/12 sm:w-1/2 mx-auto mt-10">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-12 w-12 " fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                   <span class="text-4xl font-semibold">No News found</span>
@@ -50,7 +64,7 @@
     <!-- main section start -->
     <main class="mt-10">
         <!-- news update -->
-        <section id="news-container" class="w-3/4 mx-auto">
+        <section id="news-container" class="lg:w-3/4 sm:w-1/2 mx-auto">
             
         </section>
 
@@ -61,33 +75,11 @@
     <!-- <!-- Put this part before -->
                 <input type="checkbox" id="my-modal-5" class="modal-toggle" />
                 <div class="modal">
-                <div class="modal-box w-11/12 max-w-5xl">
-                <section>
-                    <div class="card lg:card-side bg-base-100 shadow-xl mb-10">
-                        <figure><img id="news-img" src="" alt="Album"></figure>
-                        <div class="card-body">
-                          <h2 id="news-title" class="card-title"></h2>
-                          <p id="news-details"></p>
-                          <div class="card-actions justify-evenly items-center ">
-                                <div class="flex justify-center items-center gap-4">
-                                    <img class="w-16 mask mask-circle" src="" />
-                                    <div>
-                                    <h4></h4>
-                                    <p></p>
-                                    </div>
-                                </div>  
-                                    <div>
-                                    <div class="stat">
-                                    <div class="stat-value text-secondary"></div>
-                                    </div>
-                                    </div>
-                            </div>
-                        </div>
-                      </div>
-                </section>
-                <div class="modal-action">
-                <label for="my-modal-5" class="btn">Yay!</label>
-                </div>
+                <div id="modal-body" class="modal-box w-11/12 max-w-5xl">
+                <!-- <section>
+                    
+                </section> -->
+                
                 </div>
                 </div>
             </section>

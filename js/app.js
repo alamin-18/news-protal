@@ -26,8 +26,14 @@ const categoryClick = async(id) =>{
 }
 
 const displayNews = (data) =>{
-    const spinner = document.getElementById("spinner")
-    spinner.classList.remove("hidden");
+    
+    // sort cart
+    data.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
+     // sort cart 
+
+    //  alert section start
     const foundData = document.getElementById("found-alert")
     const noData = document.getElementById("no-found")
     if(data.length === 0){
@@ -41,18 +47,22 @@ const displayNews = (data) =>{
         foundData.classList.remove("hidden")
         noData.classList.add("hidden")
     }
+    //  alert section ends
+
     const newsContainer = document.getElementById("news-container")
+    const spinner = document.getElementById("spinner")
+    spinner.classList.remove("hidden");
     newsContainer.textContent =``
     data.forEach(news =>{
-        // console.log(news)
+        
         const div = document.createElement("div")
         div.innerHTML = `
-                <div class="card lg:card-side bg-base-100 shadow-xl mb-10">
+                <div class="card lg:card-side  bg-base-100 shadow-xl mb-10">
                     <figure><img src="${news.thumbnail_url ? news.thumbnail_url:"no image found"}" alt="Album"></figure>
                     <div class="card-body">
                       <h2 class="card-title">${news.title}</h2>
                       <p>${news.details.slice(0,250)+"..."}</p>
-                      <div class="card-actions justify-evenly items-center ">
+                      <div class="card-actions flex justify-evenly items-center sm:mt-10 ">
                             <div class="flex justify-center items-center gap-4">
                                 <img class="w-16 mask mask-circle" src="${news.author.img}" />
                                 <div>
@@ -60,19 +70,12 @@ const displayNews = (data) =>{
                                 <p>${news.author.published_date}</p>
                                 </div>
                             </div>
-                                <div>
-                                    <div class="rating">
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    </div>
-                                
-                                    </div>  
-                                <div>
+                                  
+                                <div class="">
                                 <div class="stat">
-                                <div class="stat-value text-secondary">${news.total_view}</div>
+                                <div>
+                                </div>
+                                <div class="stat-value text-secondary"><i class="fa-solid fa-eye"></i> ${news.total_view}</div>
                                 </div>
                                 </div>
                                 <div>
@@ -86,8 +89,8 @@ const displayNews = (data) =>{
         
         `
         newsContainer.appendChild(div)
-        spinner.classList.add("hidden")
     })
+    spinner.classList.add("hidden");
     
 }
 
@@ -102,12 +105,35 @@ const dispalyDetails = (data) =>{
     
     const modal = document.getElementById("modal")
     data.forEach(details =>{
-        // const newsImg= document.getElementById("news-img")
+        const modalBody= document.getElementById("modal-body")
         // newsImg.innerI = `${details.image_url}`
-        const newsTitle = document.getElementById("news-title")
-        newsTitle.innerText = `${details.title}`
-        const newsDetails = document.getElementById("news-details")
-        newsDetails.innerText =`${details.details}`
+        modalBody.innerHTML = `
+        <div class=" ">
+                        <figure><img class="w-52" src="${details.image_url}" alt="Album"></figure>
+                        <div class="card-body">
+                          <h2 id="news-title" class="card-title">${details.title}</h2>
+                          <p>${details.details}</p>
+                          <div class="card-actions justify-evenly items-center ">
+                                <div class="flex justify-center items-center gap-4">
+                                    <img class="w-16 mask mask-circle" src="${details.author.img}" />
+                                    <div>
+                                    <h4>${details.author.name}</h4>
+                                    <p></p>
+                                    </div>
+                                </div>  
+                                    <div>
+                                    <div class="stat">
+                                    <div class="stat-value text-secondary">${details.total_view}</div>
+                                    </div>
+                            </div>
+                        
+                            <div class="modal-action">
+                            <label for="my-modal-5" class="btn">close!</label>
+                      </div>
+                      </div>
+                        </div>
+                      
+        `
     })
 }
 
