@@ -27,6 +27,8 @@ const displayCategory = (data) =>{
   
   
 };
+// const homePage = document.getElementById("home-page")
+// homePage.innerText = categoryClick('01')
 // category click area
 const categoryClick = async(id) =>{
     spinner(true)
@@ -74,7 +76,7 @@ const displayNews = (data) =>{
     newsContainer.textContent =``
     data.forEach(news =>{
         
-        
+    
         const div = document.createElement("div")
         div.innerHTML = `
                 <div class="card lg:card-side  bg-base-100 shadow-xl mb-10">
@@ -186,7 +188,7 @@ const spinner = isLodding =>{
         `
     }
 }
-
+categoryClick('08')
 categoryload()
 
 
