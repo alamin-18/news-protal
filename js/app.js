@@ -16,10 +16,9 @@ const displayCategory = (data) =>{
     const newsMenu = document.getElementById("news-menu")
     data.forEach(category =>{
         
-    // console.log(category)
     const li = document.createElement("li")
     li.innerHTML = `<button mb-6 onclick=categoryClick('${category.category_id}') class="btn btn-active ">${category.category_name}</button>`
-    // li.innerText = `${category.category_name}`
+    
     newsMenu.appendChild(li)
     
     
@@ -27,8 +26,7 @@ const displayCategory = (data) =>{
   
   
 };
-// const homePage = document.getElementById("home-page")
-// homePage.innerText = categoryClick('01')
+
 // category click area
 const categoryClick = async(id) =>{
     spinner(true)
