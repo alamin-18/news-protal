@@ -7,15 +7,18 @@ const categoryload = async() =>{
 
 
 const displayCategory = (data) =>{
+   
     const newsMenu = document.getElementById("news-menu")
     data.forEach(category =>{
-    
+        
     // console.log(category)
     const li = document.createElement("li")
     li.innerHTML = `<button mb-6 onclick=categoryClick('${category.category_id}') class="btn btn-active ">${category.category_name}</button>`
     // li.innerText = `${category.category_name}`
     newsMenu.appendChild(li)
+    
   })
+  
 }
 
 const categoryClick = async(id) =>{
@@ -26,6 +29,7 @@ const categoryClick = async(id) =>{
 }
 
 const displayNews = (data) =>{
+    spinner(true)
     
     // sort cart
     data.sort((a, b) => {
@@ -51,8 +55,7 @@ const displayNews = (data) =>{
 
     // card contain
     const newsContainer = document.getElementById("news-container")
-    const spinner = document.getElementById("spinner")
-    spinner.classList.remove("hidden");
+    
     newsContainer.textContent =``
     data.forEach(news =>{
         
@@ -67,7 +70,7 @@ const displayNews = (data) =>{
                          <div class="flex justify-center items-center gap-4">
                                 <img class="w-16 mask mask-circle" src="${news.author.img}" />
                                 <div>
-                                <h4>${news.author.name}</h4>
+                                <h4>${news.author.name ? news.author.name : "no name found"}</h4>
                                 <p>${news.author.published_date}</p>
                                 </div>
                             </div>
@@ -76,7 +79,7 @@ const displayNews = (data) =>{
                                 <div class="stat">
                                 <div>
                                 </div>
-                                <div class="stat-value text-secondary"><i class="fa-solid fa-eye"></i> ${news.total_view}</div>
+                                <div class="stat-value text-secondary"><i class="fa-solid fa-eye"></i> ${news.total_view ? news.total_view : "no view" }</div>
                                 </div>
                                 </div>
                                 <div>
@@ -91,7 +94,7 @@ const displayNews = (data) =>{
         `
         newsContainer.appendChild(div)
     })
-    spinner.classList.add("hidden");
+    spinner(false)
     
 }
 
@@ -104,7 +107,6 @@ const newsDetails = async(news_id) =>{
 
 const dispalyDetails = (data) =>{
     
-    const modal = document.getElementById("modal")
     data.forEach(details =>{
         const modalBody= document.getElementById("modal-body")
         // newsImg.innerI = `${details.image_url}`
@@ -118,13 +120,13 @@ const dispalyDetails = (data) =>{
                                 <div class="flex justify-center items-center gap-4">
                                     <img class="w-16 mask mask-circle" src="${details.author.img}" />
                                     <div>
-                                    <h4>${details.author.name}</h4>
+                                    <h4>${details.author.name ? details.author.name : "no name found"}</h4>
                                     <p></p>
                                     </div>
                                 </div>  
                                     <div>
                                     <div class="stat">
-                                    <div class="stat-value text-secondary">${details.total_view}</div>
+                                    <div class="stat-value text-secondary"><fa-solid fa-eye"></i>${details.total_view ? details.total_view : "no view"}</div>
                                     </div>
                             </div>
                         
@@ -136,6 +138,16 @@ const dispalyDetails = (data) =>{
                       
         `
     })
+};
+
+const spinner = isLodding =>{
+    const spinner = document.getElementById("spinner")
+    if(isLodding === true){
+        spinner.classList.remove("hidden");
+    }
+    else{
+        spinner.classList.add("hidden");
+    }
 }
 
 categoryload()
