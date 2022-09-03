@@ -49,6 +49,7 @@ const displayNews = (data) =>{
     }
     //  alert section ends
 
+    // card contain
     const newsContainer = document.getElementById("news-container")
     const spinner = document.getElementById("spinner")
     spinner.classList.remove("hidden");
@@ -80,7 +81,7 @@ const displayNews = (data) =>{
                                 </div>
                                 <div>
                                 
-                                <label onclick=newsDetails('${news._id}') for="my-modal-5" class="btn modal-button">open modal</label>
+                                <label onclick=newsDetails('${news._id}') for="my-modal-5" class="btn modal-button">Details</label>
 
                                 </div>
                         </div>
