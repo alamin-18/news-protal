@@ -1,8 +1,13 @@
 const categoryload = async() =>{
     const url = `https://openapi.programming-hero.com/api/news/categories`
-    const res = await fetch(url)
-    const data = await res.json()
-    displayCategory(data.data.news_category)
+    try{
+        const res = await fetch(url)
+        const data = await res.json()
+        displayCategory(data.data.news_category)
+    }
+    catch (errow){
+        console.log(errow)
+    }
 };
 
 
@@ -26,9 +31,14 @@ const displayCategory = (data) =>{
 const categoryClick = async(id) =>{
     spinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
-    const res = await fetch(url)
-    const data = await res.json()
-    displayNews(data.data)
+    try{
+        const res = await fetch(url)
+        const data = await res.json()
+        displayNews(data.data)
+    }
+    catch (errow){
+        console.log(errow)
+    }
 };
 // category click area ends
 
@@ -109,9 +119,14 @@ const displayNews = (data) =>{
 // detall news uppdata
 const newsDetails = async(news_id) =>{
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`
-    const res = await fetch(url)
-    const data = await res.json()
-    dispalyDetails(data.data)
+    try{
+        const res = await fetch(url)
+        const data = await res.json()
+        dispalyDetails(data.data)
+    }
+    catch(errow){
+        console.log(errow)
+    }
 };
 // detall news uppdata ends
 
@@ -138,7 +153,7 @@ const dispalyDetails = (data) =>{
                                 </div>  
                                     <div>
                                     <div class="stat">
-                                    <div class="stat-value text-secondary"><fa-solid fa-eye"></i>${details.total_view ? details.total_view : "no view"}</div>
+                                    <div class="stat-value text-secondary"><i class="fa-solid fa-eye"></i> ${details.total_view ? details.total_view : "no view"}</div>
                                     </div>
                             </div>
                         
