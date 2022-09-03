@@ -17,19 +17,24 @@ const displayCategory = (data) =>{
     // li.innerText = `${category.category_name}`
     newsMenu.appendChild(li)
     
-  })
+    
+  });
   
-}
-
+  
+};
+// category click area
 const categoryClick = async(id) =>{
+    spinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     const res = await fetch(url)
     const data = await res.json()
     displayNews(data.data)
-}
+};
+// category click area ends
 
+// news updata display start
 const displayNews = (data) =>{
-    spinner(true)
+    
     
     // sort cart
     data.sort((a, b) => {
@@ -59,16 +64,17 @@ const displayNews = (data) =>{
     newsContainer.textContent =``
     data.forEach(news =>{
         
+        
         const div = document.createElement("div")
         div.innerHTML = `
                 <div class="card lg:card-side  bg-base-100 shadow-xl mb-10">
-                    <figure><img src="${news.thumbnail_url ? news.thumbnail_url:"no image found"}" alt="Album"></figure>
+                    <figure><img class="w-full" src="${news.thumbnail_url ? news.thumbnail_url:"no image found"}" alt="Album"></figure>
                     <div class="card-body">
                       <h2 class="card-title">${news.title}</h2>
                       <p>${news.details.slice(0,250)+"..."}</p>
                       <div class="card-actions flex justify-evenly items-center sm:mt-10 ">
                          <div class="flex justify-center items-center gap-4">
-                                <img class="w-16 mask mask-circle" src="${news.author.img}" />
+                                <img class="w-16 sm:w-10 mask mask-circle" src="${news.author.img}" />
                                 <div>
                                 <h4>${news.author.name ? news.author.name : "no name found"}</h4>
                                 <p>${news.author.published_date}</p>
@@ -93,26 +99,32 @@ const displayNews = (data) =>{
         
         `
         newsContainer.appendChild(div)
-    })
-    spinner(false)
+        
+    });
     
-}
+    spinner(false) 
+};
+// news updata display ends
 
+// detall news uppdata
 const newsDetails = async(news_id) =>{
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`
     const res = await fetch(url)
     const data = await res.json()
     dispalyDetails(data.data)
-}
+};
+// detall news uppdata ends
+
+// detall news uppdata display
 
 const dispalyDetails = (data) =>{
-    
+    // foreach start
     data.forEach(details =>{
         const modalBody= document.getElementById("modal-body")
-        // newsImg.innerI = `${details.image_url}`
+        
         modalBody.innerHTML = `
         <div class=" ">
-                        <figure><img class="w-52" src="${details.image_url}" alt="Album"></figure>
+                        <figure><img class="w-full" src="${details.image_url}" alt="Album"></figure>
                         <div class="card-body">
                           <h2 id="news-title" class="card-title">${details.title}</h2>
                           <p>${details.details}</p>
@@ -138,15 +150,25 @@ const dispalyDetails = (data) =>{
                       
         `
     })
-};
+    // foreach ends
 
+    
+};
+// detall news uppdata display ends
+
+// spinner
 const spinner = isLodding =>{
-    const spinner = document.getElementById("spinner")
+    const spinner = document.getElementById("spinner-progress")
     if(isLodding === true){
-        spinner.classList.remove("hidden");
+        spinner.innerHTML =`
+        <progress  class="progress w-full bg-red-700"></progress>
+        `
+        
     }
     else{
-        spinner.classList.add("hidden");
+        spinner.innerHTML =`
+        <progress  class="progress w-full bg-red-700 hidden"></progress>
+        `
     }
 }
 
